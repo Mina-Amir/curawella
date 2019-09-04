@@ -12,10 +12,5 @@ const firebaseConfig = {
 };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig)
-  // let databaseRef = firebase.database().ref('/Appointments/K0jTZLvEH8WKtvWz1TGJgMXWO7y1')
-  // databaseRef.on('value', snapshot => {
-  //   console.log(snapshot.val())
-  // })
-  // console.log(databaseRef)
 
   export default firebase
