@@ -5,6 +5,9 @@ $primaryColor: #1582a3;
 .display-none{
   display: none;
 }
+.img-fluid{
+  width: 100%;
+}
 .main-menu-container{
   display: grid;
   grid-template-columns: auto 1fr;
@@ -74,11 +77,17 @@ $primaryColor: #1582a3;
     &:first-child{
       margin-left: 0;
     }
-    &.checked:before{
-      content: '\2605';
+  }
+  .star-rating{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    .stars-filled{
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
+      overflow: hidden;
+      display: flex;
     }
   }
 }

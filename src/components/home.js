@@ -8,7 +8,8 @@ class Home extends Component{
         super(props)
         this.state={
             date: "0",
-            appointmentType: "0"
+            appointmentType: "0",
+            width: 50
         }
     }
     componentDidMount(){
@@ -29,25 +30,37 @@ class Home extends Component{
     handleAppointmentChange = (val) => {
         this.setState({appointmentType: val})
     }
+    handleRating = (e) => {
+        let rect = this.rating.getBoundingClientRect()
+        let width = e.clientX - rect.left
+        this.setState({width: width})
+    }
     render(){
         return(
             <main>
                 <div className="container-fluid doctor-name">
                     <div className="container text-center">
                         <h2>Dr Jane Smith</h2>
-                        <div>
-                            <span className="checked">☆</span>
-                            <span className="checked">☆</span>
-                            <span className="checked">☆</span>
-                            <span className="checked">☆</span>
-                            <span>☆</span>
+                        <div ref={node => this.rating = node} onClick={this.handleRating} className="star-rating">
+                            <span><i className="far fa-star"></i></span>
+                            <span><i className="far fa-star"></i></span>
+                            <span><i className="far fa-star"></i></span>
+                            <span><i className="far fa-star"></i></span>
+                            <span><i className="far fa-star"></i></span>
+                            <div style={{width: `${this.state.width}px`}} className="stars-filled">
+                                <span><i className="fas fa-star"></i></span>
+                                <span><i className="fas fa-star"></i></span>
+                                <span><i className="fas fa-star"></i></span>
+                                <span><i className="fas fa-star"></i></span>
+                                <span><i className="fas fa-star"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="container">
                     <div className="row">
                         <div className="col s6">
-                            <img src={doc} alt="doctor" />
+                            <img src={doc} alt="doctor" className="img-fluid" />
                         </div>
                         <div className="col s6">
                             <h2>Dr Jane Smith</h2>
