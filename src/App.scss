@@ -1,33 +1,71 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+$primaryColor: #1582a3;
+.main-menu-container{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .logo-container{
+    span{
+      margin-left: 10px;
+      display: inline-block;
+    }
+    img{
+      width: 4vw;
+      height: auto;
+    }
   }
-  to {
-    transform: rotate(360deg);
+  .primary-menu-container{
+    position: relative;
+    justify-self: flex-end;
+    display: flex;
+    align-items: center;
+    ul{
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding-inline-start: 0;
+      align-items: center;
+      li{
+        margin: 0 15px;
+        &:first-child{
+          margin-left: 0;
+        }
+      }
+    }
+    .profile-pic{
+      img{
+        border-radius: 50%;
+        width: 2vw;
+        border: 1px solid #000;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.doctor-name{
+  background-color: $primaryColor;
+  padding: 20px 0;
+  h2{
+    color: #fff;
+    font-size: 30px;
+  }
+  span{
+    position: relative;
+    color: #f0e9a5;
+    font-size: 20px;
+    display: inline-block;
+    margin: 0 10px;
+    &:last-child{
+      margin-right: 0;
+    }
+    &:first-child{
+      margin-left: 0;
+    }
+    &.checked:before{
+      content: '\2605';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
 }

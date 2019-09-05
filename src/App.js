@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import './App.scss'
 import Appointments from './components/getAppointments'
 import Header from './components/header'
+import 'bulma'
 import 'bootstrap-css-only'
+import Home from './components/home'
 
 class App extends Component{
   constructor(props){
@@ -11,13 +13,11 @@ class App extends Component{
      
     }
   }
-  componentDidMount(){
-    
-  }
   render(){
     return (
       <div className="App">
         <Header />
+        <Home />
         <Appointments />
       </div>
     )
