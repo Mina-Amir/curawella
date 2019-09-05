@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import logo from '../imgs/logo.png'
 import person from '../imgs/person.png'
+import M from 'materialize-css'
 
 class Header extends Component{
     constructor(props){
@@ -9,8 +10,8 @@ class Header extends Component{
             langMenuIsOpen: false
         }
     }
-    langMenuHandle = () => {
-        this.setState(prevState => ({langMenuIsOpen: !prevState.langMenuHandle}))
+    componentDidMount(){
+        M.AutoInit()
     }
     render(){
         return(
@@ -28,7 +29,13 @@ class Header extends Component{
                                 <li><a href="#">Symptoms</a></li>
                                 <li><a href="#">Contact Us</a></li>
                                 <li>
-                                    <div className={`dropdown ${this.state.langMenuIsOpen ? 'is-active': '' }`}>
+                                    <a className='dropdown-trigger btn lang-button' href='#' data-target='dropdown1'>EN/عربى</a>
+                                    <ul id='dropdown1' className='dropdown-content'>
+                                        <li><a href="#!">EN</a></li>
+                                        <li className="divider" tabIndex="-1"></li>
+                                        <li><a href="#!">عربى</a></li>
+                                    </ul>
+                                    {/* <div className={`dropdown ${this.state.langMenuIsOpen ? 'is-active': '' }`}>
                                         <div className="dropdown-trigger">
                                             <button onClick={this.langMenuHandle} className="button" aria-haspopup="true" aria-controls="lang-menu">
                                             <span>EN/عربى</span>
@@ -40,20 +47,14 @@ class Header extends Component{
                                         <div className="dropdown-menu" id="lang-menu" role="menu">
                                             <div className="dropdown-content">
                                                 <a href="#" className="dropdown-item">
-                                                    Dropdown item
+                                                    EN
                                                 </a>
                                                 <a className="dropdown-item">
-                                                    Other dropdown item
-                                                </a>
-                                                <a href="#" className="dropdown-item">
-                                                    Active dropdown item
-                                                </a>
-                                                <a href="#" className="dropdown-item">
-                                                    Other dropdown item
+                                                    عربى
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </li>
                             </ul>
                             <div className="profile-pic">

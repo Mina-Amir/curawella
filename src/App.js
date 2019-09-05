@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import './App.scss'
 import Appointments from './components/getAppointments'
 import Header from './components/header'
-import 'bulma'
-import 'bootstrap-css-only'
+// import 'bulma'
+// import 'bootstrap-css-only'
+import 'materialize-css/sass/materialize.scss'
+import './App.scss'
 import Home from './components/home'
 
 class App extends Component{
