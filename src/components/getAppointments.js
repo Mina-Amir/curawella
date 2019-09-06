@@ -10,24 +10,28 @@ class Appointments extends Component{
     }
     componentDidMount(){
         M.AutoInit()
+        this.getAppointments()
+    }
+    getAppointments = () => {
         let modal = M.Modal.getInstance(this.modal)
         let patientsRef = firebase.database().ref('/Appointments/K0jTZLvEH8WKtvWz1TGJgMXWO7y1')
         patientsRef.on('value', (snapshot) => {
             let patients = snapshot.val()
             let patientsValues = Object.values(patients)
-            let onlineReservation = patientsValues.filter(value => value.type === "Online")
-            let bookingsObj = onlineReservation.map(reservation => {
-                return reservation.bookings
+            let onlineReservation = patientsValues.filter(value => (value.type === "Online" || value.type === "Both"))
+            let bookingsObj = []
+            onlineReservation.forEach(reservation => {
+                if(reservation.hasOwnProperty('bookings')){
+                    bookingsObj.push(...Object.values(reservation.bookings))
+                }
             })
             let bookings = []
             bookingsObj.forEach(booking => {
-                if(booking !== undefined){
-                bookings.push(...(Object.values(booking)))
+                if(booking.type === "Online"){
+                    bookings.push(booking)
                 }
             })
-            console.log(bookings)
             let muhammadBookings = bookings.filter(book => ((book.patName).toLowerCase()).includes("muhammad"))
-            console.log(muhammadBookings)
             this.setState({
                 bookings: [...muhammadBookings]
             }, () => {
